@@ -47,12 +47,7 @@ function NoteCard(props) {
                 subheader={props.note.Category}
                 />
 
-                <CardContent>
-                    <Typography variant={"body2"} color={"textSecondary"} >
-                        {props.note.details}
-                    </Typography>
-                </CardContent>
-
+                
 
             </Card>
         </>
