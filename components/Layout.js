@@ -101,6 +101,32 @@ function Layout (props){
             anchor={"left"}
             classes = {{paper: classes.drawerPaper}}
             >
+                
+                <div>
+                    <Typography variant={"h5"} className={classes.title}>
+                       SwapfM's Notes
+                    </Typography>
+                </div>
+
+                <List>
+                    {menuItems.map(item => (
+                        <ListItem
+                            button
+                        key={item.text}
+                        onClick={() => history.push(item.path)}
+                        className = {location.pathname === item.path ? classes.active : null}>
+
+                            <ListItemIcon>{item.icon}</ListItemIcon>
+                            <ListItemText primary={item.text}/>
+                        </ListItem>
+                    ))}
+                </List>
+            </Drawer>
+           
+            </div>
+        </div>
+
+    )
 
 
 }
