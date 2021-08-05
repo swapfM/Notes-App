@@ -46,6 +46,13 @@ function NoteCard(props) {
                 title = {props.note.title}
                 subheader={props.note.Category}
                 />
+                     
+                       <CardContent>
+                    <Typography variant={"body2"} color={"textSecondary"} >
+                        {props.note.details}
+                    </Typography>
+                </CardContent>
+
 
               
 
