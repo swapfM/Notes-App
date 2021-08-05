@@ -9,8 +9,7 @@ import {blue, green, pink, yellow} from "@material-ui/core/colors";
 
 function NoteCard(props) {
 
-
-    const useStyles = makeStyles({
+     const useStyles = makeStyles({
 
         avatar: {
             backgroundColor: (note) => {
@@ -38,20 +37,9 @@ function NoteCard(props) {
                             {props.note.Category[0].toUpperCase()}
                         </Avatar>
                     }
-                action ={
-                    <IconButton onClick={()=> props.deleteHandler(props.note.id)}>
-                        <DeleteOutlined/>
-                    </IconButton>
-                }
-                title = {props.note.title}
-                subheader={props.note.Category}
-                />
-
-                
-
-            </Card>
-        </>
-    )
+               
+   
+    
 }
 
 export default NoteCard;
