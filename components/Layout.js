@@ -1,59 +1,108 @@
-import React, {useEffect, useState} from 'react'
-import {Card, Container, Grid, Paper} from "@material-ui/core";
-import NoteCard from "../components/NoteCard";
-import Masonry from "react-masonry-css"
-
-export default function Notes() {
-
-    const [notes, setNotes] = useState([])
-
-
-  useEffect(async () => {
-
-      const response = await fetch('http://localhost:3001/notes')
-
-         const data = await response.json();
-        setNotes(data)
+import React from "react";
+import {Drawer, makeStyles} from "@material-ui/core";
+import Typography from "@material-ui/core/Typography";
+import {List} from "@material-ui/core";
+import {ListItem} from "@material-ui/core";
+import {ListItemIcon} from "@material-ui/core";
+import {ListItemText} from "@material-ui/core";
+import {AddCircleOutlineOutlined, SubjectOutlined} from "@material-ui/icons";
+import {useHistory, useLocation} from "react-router-dom";
+import {AppBar} from "@material-ui/core";
+import {Toolbar} from "@material-ui/core";
+import { format} from "date-fns";
+import {Avatar} from "@material-ui/core";
 
 
+const drawerWidth = 240
 
-  },[])
+const useStyles = makeStyles((theme) =>{
 
-    const deleteHandler = async (id) => {
+    return {
+        page: {
+            background: '#f9f9f9',
+            width: '100%',
+            padding: theme.spacing(3)
+        },
 
-        await fetch('http://localhost:3001/notes/' + id, {
-            method: 'DELETE'
-        })
+        drawer: {
+            width: drawerWidth
+        },
+        drawerPaper: {
+            width: drawerWidth
+        },
+        root: {
+            display: "flex"
+        },
 
-        const newNotes = notes.filter(note => note.id !== id)
-        setNotes(newNotes)
+        active: {
+            background: '#f4f4f4'
+        },
+        title: {
+            padding: theme.spacing(2)
+        },
+        appbar: {
+            width: `calc(100% - ${drawerWidth}px)`
+        },
+        toolbar: theme.mixins.toolbar,
+
+        date: {
+            flexGrow: 1
+        },
+        user: {
+            marginLeft: 10
+        }
+
     }
 
-    const breakpoints = {
-        default: 3,
-        1100: 2,
-        700: 1
-    }
+})
+
+function Layout (props){
 
 
-  return (
-    <Container>
+    const classes = useStyles()
+    const history = useHistory()
+    const location = useLocation()
+
+    const menuItems = [
+        {
+            text: 'My Notes',
+            icon: <SubjectOutlined  color={"secondary"}/>,
+            path: '/'
+        },
+        {
+            text: 'Create Note',
+            icon: <AddCircleOutlineOutlined color={"secondary"}/>,
+            path: '/Create'
+        },
+    ]
+    return(
+        <div className = {classes.root}>
+
+            <AppBar
+                className={classes.appbar}
+            elevation={0}>
+                <Toolbar>
+                    <Typography className={classes.date}>
+                        Today is the { format(new Date(), 'do MMMM Y')}
+                    </Typography>
+
+                    <Avatar src="./img.png" />
 
 
-            <Masonry
-                breakpointCols = {breakpoints}
-                className = 'my-masonry-grid'
-                columnClassName = 'my-masonry-grid_column'
-                >
-                {notes.map(note => (
-                    <div key={note.id} >
-                    <NoteCard note = {note} deleteHandler = {deleteHandler}/>
-                    </div>
+                    <Typography className={classes.user}>
+                        User
+                    </Typography>
+                </Toolbar>
+            </AppBar>
 
-                ))}
+            <Drawer
+                className={classes.drawer}
+            variant={"permanent"}
+            anchor={"left"}
+            classes = {{paper: classes.drawerPaper}}
+            >
 
-            </Masonry>
 
-    </Container>
-  )
 }
+
+export default Layout;
