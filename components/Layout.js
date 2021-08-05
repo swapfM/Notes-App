@@ -122,6 +122,11 @@ function Layout (props){
                     ))}
                 </List>
             </Drawer>
+                    
+                 <div className={classes.page}>
+                <div className={classes.toolbar}></div>
+                {props.children}
+
            
             </div>
         </div>
