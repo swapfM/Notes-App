@@ -37,6 +37,21 @@ function NoteCard(props) {
                             {props.note.Category[0].toUpperCase()}
                         </Avatar>
                     }
+                    
+                     action ={
+                    <IconButton onClick={()=> props.deleteHandler(props.note.id)}>
+                        <DeleteOutlined/>
+                    </IconButton>
+                }
+                title = {props.note.title}
+                subheader={props.note.Category}
+                />
+
+              
+
+            </Card>
+        </>
+    )
                
    
     
