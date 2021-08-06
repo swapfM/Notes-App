@@ -10,3 +10,33 @@ export default function Notes() {
 
 
   
+useEffect(async () => {
+
+      const response = await fetch('http://localhost:3001/notes')
+
+         const data = await response.json();
+        setNotes(data)
+
+
+
+  },[])
+
+    const deleteHandler = async (id) => {
+
+        await fetch('http://localhost:3001/notes/' + id, {
+            method: 'DELETE'
+        })
+
+        const newNotes = notes.filter(note => note.id !== id)
+        setNotes(newNotes)
+    }
+
+    const breakpoints = {
+        default: 3,
+        1100: 2,
+        700: 1
+    }
+
+
+ 
+}
