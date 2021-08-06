@@ -30,6 +30,13 @@ useEffect(async () => {
         const newNotes = notes.filter(note => note.id !== id)
         setNotes(newNotes)
     }
+    
+    
+    const breakpoints = {
+        default: 3,
+        1100: 2,
+        700: 1
+    }
 
  return (
     <Container>
