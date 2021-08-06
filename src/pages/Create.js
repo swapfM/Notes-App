@@ -98,7 +98,14 @@ export default function Create() {
                 error={detailserr}
                 required
             />
+                 <FormControl className={classes.field}>
+            <FormLabel>Note Category</FormLabel>
+            <RadioGroup value={Category} onChange={(e)=>setCategory(e.target.value)}>
 
+                
+
+            </RadioGroup>
+            </FormControl>
            
 
             <Button type="submit"
