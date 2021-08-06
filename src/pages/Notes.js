@@ -10,16 +10,7 @@ export default function Notes() {
 
 
   
-useEffect(async () => {
 
-      const response = await fetch('http://localhost:3001/notes')
-
-         const data = await response.json();
-        setNotes(data)
-
-
-
-  },[])
 
     const deleteHandler = async (id) => {
 
