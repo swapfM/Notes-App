@@ -1,4 +1,3 @@
-
 import React, {useState} from 'react'
 import Typography from "@material-ui/core/Typography";
 import {Button, FormControlLabel, RadioGroup} from "@material-ui/core";
@@ -11,6 +10,8 @@ import {FormLabel} from "@material-ui/core";
 import {FormControl} from "@material-ui/core";
 import {useHistory} from 'react-router-dom';
 
+
+
 const useStyles = makeStyles({
 
     field: {
@@ -20,8 +21,6 @@ const useStyles = makeStyles({
     }
 
 });
-
-
 
 export default function Create() {
 
@@ -76,7 +75,39 @@ export default function Create() {
        </Typography>
 
         < form noValidate autoComplete="off" onSubmit={handleSubmit} >
+            <TextField
+            onChange={(e) => setTitle(e.target.value)}
+            className={classes.field}
+            label={"Note Tile"}
+            variant = "outlined"
+            color="secondary"
+            fullWidth
+            required
+            error={titleerr}
+            />
+
+            <TextField
+                onChange={(e) => setDetails(e.target.value)}
+                className={classes.field}
+                label={"Details"}
+                multiline
+                rows={4}
+                variant = "outlined"
+                color="secondary"
+                fullWidth
+                error={detailserr}
+                required
+            />
+
            
+
+            <Button type="submit"
+            color="secondary"
+            variant="contained"
+            endIcon={<KeyboardArrowRight/>}
+            >
+            Submit
+        </Button>
 
         </form>
 
@@ -84,4 +115,3 @@ export default function Create() {
     </Container>
   )
 }
-
