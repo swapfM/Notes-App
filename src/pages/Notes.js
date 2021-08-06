@@ -31,12 +31,26 @@ useEffect(async () => {
         setNotes(newNotes)
     }
 
-    const breakpoints = {
-        default: 3,
-        1100: 2,
-        700: 1
-    }
+ return (
+    <Container>
 
+
+            <Masonry
+                breakpointCols = {breakpoints}
+                className = 'my-masonry-grid'
+                columnClassName = 'my-masonry-grid_column'
+                >
+                {notes.map(note => (
+                    <div key={note.id} >
+                    <NoteCard note = {note} deleteHandler = {deleteHandler}/>
+                    </div>
+
+                ))}
+
+            </Masonry>
+
+    </Container>
+  )
 
  
 }
