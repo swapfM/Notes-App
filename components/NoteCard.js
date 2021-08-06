@@ -30,15 +30,14 @@ function NoteCard(props) {
     console.log(props.note.Category)
     return (
         <>
-            <Card elevation={1}>
+             <Card elevation={1}>
                 <CardHeader
                     avatar = {
                         <Avatar className={classes.avatar}>
                             {props.note.Category[0].toUpperCase()}
                         </Avatar>
                     }
-                    
-                     action ={
+                action ={
                     <IconButton onClick={()=> props.deleteHandler(props.note.id)}>
                         <DeleteOutlined/>
                     </IconButton>
@@ -46,15 +45,13 @@ function NoteCard(props) {
                 title = {props.note.title}
                 subheader={props.note.Category}
                 />
-                     
-                       <CardContent>
+
+                <CardContent>
                     <Typography variant={"body2"} color={"textSecondary"} >
                         {props.note.details}
                     </Typography>
                 </CardContent>
 
-
-              
 
             </Card>
         </>
