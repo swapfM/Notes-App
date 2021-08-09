@@ -63,7 +63,16 @@ export default function Create() {
     }
 
   return (
-  
+    <Container>
+
+       <Typography
+           variant="h6"
+           component="h2"
+           gutterBottom
+           color="textSecondary"
+           >
+           Create a New Note
+       </Typography>
 
         < form noValidate autoComplete="off" onSubmit={handleSubmit} >
             <TextField
@@ -77,7 +86,18 @@ export default function Create() {
             error={titleerr}
             />
 
-
+            <TextField
+                onChange={(e) => setDetails(e.target.value)}
+                className={classes.field}
+                label={"Details"}
+                multiline
+                rows={4}
+                variant = "outlined"
+                color="secondary"
+                fullWidth
+                error={detailserr}
+                required
+            />
 
             <FormControl className={classes.field}>
             <FormLabel>Note Category</FormLabel>
@@ -99,6 +119,7 @@ export default function Create() {
             Submit
         </Button>
 
+        </form>
 
 
     </Container>
