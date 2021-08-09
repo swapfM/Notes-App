@@ -8,6 +8,14 @@ export default function Notes() {
     const [notes, setNotes] = useState([])
 
 
+  useEffect(async () => {
+
+      const response = await fetch('http://localhost:3001/notes')
+
+         const data = await response.json();
+        setNotes(data)
+
+
 
   },[])
 
@@ -28,4 +36,24 @@ export default function Notes() {
     }
 
 
+  return (
+    <Container>
+
+
+            <Masonry
+                breakpointCols = {breakpoints}
+                className = 'my-masonry-grid'
+                columnClassName = 'my-masonry-grid_column'
+                >
+                {notes.map(note => (
+                    <div key={note.id} >
+                    <NoteCard note = {note} deleteHandler = {deleteHandler}/>
+                    </div>
+
+                ))}
+
+            </Masonry>
+
+    </Container>
+  )
 }
