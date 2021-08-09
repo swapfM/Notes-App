@@ -86,30 +86,19 @@ export default function Create() {
             error={titleerr}
             />
 
-            <TextField
-                onChange={(e) => setDetails(e.target.value)}
-                className={classes.field}
-                label={"Details"}
-                multiline
-                rows={4}
-                variant = "outlined"
-                color="secondary"
-                fullWidth
-                error={detailserr}
-                required
-            />
-                 <FormControl className={classes.field}>
+
+
+            <FormControl className={classes.field}>
             <FormLabel>Note Category</FormLabel>
             <RadioGroup value={Category} onChange={(e)=>setCategory(e.target.value)}>
+
                 <FormControlLabel value="money" control={<Radio />} label="Money" />
                 <FormControlLabel value="todos" control={<Radio />} label="Todos" />
                 <FormControlLabel value="reminders" control={<Radio />} label="Reminders" />
                 <FormControlLabel value="work" control={<Radio />} label="Work" />
-                
 
             </RadioGroup>
             </FormControl>
-           
 
             <Button type="submit"
             color="secondary"
@@ -118,6 +107,13 @@ export default function Create() {
             >
             Submit
         </Button>
+
+        </form>
+
+
+    </Container>
+  )
+}
 
         </form>
 
