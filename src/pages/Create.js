@@ -63,16 +63,7 @@ export default function Create() {
     }
 
   return (
-    <Container>
-
-       <Typography
-           variant="h6"
-           component="h2"
-           gutterBottom
-           color="textSecondary"
-           >
-           Create a New Note
-       </Typography>
+  
 
         < form noValidate autoComplete="off" onSubmit={handleSubmit} >
             <TextField
