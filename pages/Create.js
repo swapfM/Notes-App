@@ -74,7 +74,22 @@ export default function Create() {
            Create a New Note
        </Typography>
 
-       \
+        < form noValidate autoComplete="off" onSubmit={handleSubmit} >
+            <TextField
+            onChange={(e) => setTitle(e.target.value)}
+            className={classes.field}
+            label={"Note Tile"}
+            variant = "outlined"
+            color="secondary"
+            fullWidth
+            required
+            error={titleerr}
+            />
+
+          \
+
+        </form>
+
 
     </Container>
   )
