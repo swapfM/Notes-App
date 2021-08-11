@@ -19,7 +19,16 @@ export default function Notes() {
 
   },[])
 
-  
+    const deleteHandler = async (id) => {
+
+        await fetch('http://localhost:3001/notes/' + id, {
+            method: 'DELETE'
+        })
+
+        const newNotes = notes.filter(note => note.id !== id)
+        setNotes(newNotes)
+    }
+
     const breakpoints = {
         default: 3,
         1100: 2,
