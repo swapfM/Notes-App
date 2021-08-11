@@ -12,7 +12,15 @@ import {useHistory} from 'react-router-dom';
 
 
 
+const useStyles = makeStyles({
 
+    field: {
+        marginTop: 20,
+        marginBottom: 20,
+        display: 'block'
+    }
+
+});
 
 export default function Create() {
 
@@ -41,9 +49,21 @@ export default function Create() {
                 body: JSON.stringify({title, details, Category})
 
 
-          
+            })
+           await( history.push("/"))
+
+
+
+        }
+        else {
+            if (!title) setTitleerr(true)
+            if (!details) setDetailserr(true)
+        }
+
+    }
 
  
+
 
     </Container>
   )
