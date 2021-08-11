@@ -1,39 +1,49 @@
-import React, {useEffect, useState} from 'react'
-import {Card, Container, Grid, Paper} from "@material-ui/core";
-
-
-export default function Notes() {
-
-    const [notes, setNotes] = useState([])
-
-  useEffect(async () => {
-
-      const response = await fetch('http://localhost:3001/notes')
-
-         const data = await response.json();
-        setNotes(data)
+import React, {useState} from 'react'
+import Typography from "@material-ui/core/Typography";
+import {Button, FormControlLabel, RadioGroup} from "@material-ui/core";
+import {Container} from "@material-ui/core";
+import {Category, KeyboardArrowRight} from "@material-ui/icons";
+import { makeStyles } from "@material-ui/core";
+import {TextField} from "@material-ui/core";
+import {Radio} from "@material-ui/core";
+import {FormLabel} from "@material-ui/core";
+import {FormControl} from "@material-ui/core";
+import {useHistory} from 'react-router-dom';
 
 
 
-  },[])
 
 
-  return (
-    <Container>
+export default function Create() {
 
-    <Grid container>
-
-
-                {notes.map(note => (
-                    <Grid key={note.id} item md={3} xs={12} sm={6}>
-                    <Card >{note.title}</Card>
-                    </Grid>
-
-                ))}
+    const classes = useStyles()
+    const [title, setTitle] = useState('')
+    const [details, setDetails] = useState('')
+    const [titleerr, setTitleerr] = useState(false)
+    const [detailserr, setDetailserr] = useState(false)
+    const [Category, setCategory] = useState('todos')
+    const history  = useHistory()
 
 
 
-    </Grid>
+    const handleSubmit = async (e)=> {
+        e.preventDefault();
+
+        if (title && details) {
+            setTitleerr(false)
+            setDetailserr(false)
+
+            await fetch('http://localhost:3001/notes', {
+                method: 'POST',
+                headers: {
+                    'Content-type': 'application/json',
+                },
+                body: JSON.stringify({title, details, Category})
+
+
+          
+
+ 
 
     </Container>
   )
